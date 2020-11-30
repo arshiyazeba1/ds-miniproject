@@ -123,7 +123,7 @@ struct node * l(){
 void display_current(struct node*current,int i){
     printf("\n%d. Task Name : %s",i,current->task);
     printf("Task Priority : %d\n",current->priority);
-    printf("Submission Date : %d/%d/%d\n",(current->date).tm_mday,(current->date).tm_mon,(current->date).tm_year);
+    printf("Due Date : %d/%d/%d\n",(current->date).tm_mday,(current->date).tm_mon,(current->date).tm_year);
     struct sub *subtask=current->s;
 
     if(subtask!=NULL)
@@ -212,7 +212,7 @@ void insert(struct node** list){
         priority=getdig();
      }
 
-    printf("Submission Date in DD MM YYYY format : ");
+    printf("Due Date in DD MM YYYY format : ");
     struct tm date;
     getdat(&date.tm_mday,&date.tm_mon,&date.tm_year);
 
@@ -301,7 +301,7 @@ void insert(struct node** list){
 
 //function to edit tasks as required
 void edit_task(struct node** first,struct node * prev,struct node * current){
-    printf("\n1.Delete Current Task\n2.Edit Current Task Submission Date\n3.Edit Current Task Priority\n");
+    printf("\n1.Delete Current Task\n2.Edit Current Task Due Date\n3.Edit Current Task Priority\n");
     int ch,nos=0;
     ch=getdig();
     while(ch<1||ch>3){
@@ -320,7 +320,7 @@ void edit_task(struct node** first,struct node * prev,struct node * current){
             no_of_tasks-=1;
             return;
         case 2:
-            printf("\nSubmission Date in DD MM YYYY format : ");
+            printf("\nDue Date in DD MM YYYY format : ");
             struct tm date;
             getdat(&date.tm_mday,&date.tm_mon,&date.tm_year);
             //See whether you have to deallocate the memory before returning
@@ -602,7 +602,7 @@ void extension(struct node **first){
         printf("\n\nDeadline is Over for the task\n\n");//Prints tasks for which date has passed
         display_current(current,i);
         //user makes the choice
-        printf("\nMake a choice\n1. Enter new Submission Date\n2. Delete the task\n");
+        printf("\nMake a choice\n1. Enter new Due Date\n2. Delete the task\n");
         int ch;
         ch=getdig();
         while(ch<1||ch>2){
@@ -612,7 +612,7 @@ void extension(struct node **first){
         switch (ch)
         {
             case 1:
-            printf("\nSubmission Date in DD MM YYYY format : ");
+            printf("\nDue Date in DD MM YYYY format : ");
             struct tm date;
             getdat(&date.tm_mday,&date.tm_mon,&date.tm_year);
             //See whether you have to deallocate the memory before returning
